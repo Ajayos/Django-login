@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>HI LOGIN</title>
+  </head>
+  <body>
+    <section>
+      <div >
+        <br />
+        <br />
+        <br />
+        <div class="form-box">
+          <form>
+            <h2>Hi {{ user }}</h2>
+            <br />
+            <h3>Hi {{ user }} welcome to the webpages!</h3>
+            <br />
+            <br />
+            <br />
+            <button class="button2" ><a href="{% url 'logout' %}">LOGUT</a></button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

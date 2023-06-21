@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <link rel="stylesheet" href="{% static 'css/base.css' %}">
+      <title>LOGIN</title>
+    </head>
+    <body>
+        <style>
+            .red-box {
+                color: white;
+                margin: 30px 0;
+                left: 10px;
+                width: 300px;
+                border: coral;
+                border-bottom: 2px solid #e30505;
+            }
+        </style>
+        <section>
+            <div >
+                <br />
+                <br />
+                <br />
+                <div class="form-box">
+                    <form id="tokenForm" action="{% url 'login' %}" method="post" >
+                        <h2>LOGIN</h2>
+                        <br />
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="red-box">
+                                    <div class="alert alert-danger text-center bg-red" role="alert">
+                                        <p>{{ message }}</p>
+                                    </div>
+                                </div>
+                                <br />
+                            {% endfor %}
+                        {% endif %}
+                        {% csrf_token %}
+                        <div class="inputbox">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <input type="username" id="username" name="username" required>
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input type="password" id="password" name="password" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <button class="button2" type="submit">LOGIN</button>
+                        <br />
+                        <p style="color: white; padding: 15px;">Don't have an account? <a href="{% url 'signup' %}">Register</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>

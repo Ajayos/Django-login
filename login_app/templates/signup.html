@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <link rel="stylesheet" href="{% static 'css/base.css' %}">
+      <title>SIGNUP</title>
+    </head>
+    <body>
+        <style>
+            .red-box {
+                color: white;
+                margin: 30px 0;
+                left: 10px;
+                width: 300px;
+                border: coral;
+                border-bottom: 2px solid #e30505;
+            }
+        </style>
+        <section>
+            <div >
+                <br />
+                <br />
+                <div class="form-box">
+                    <form id="tokenForm" action="{% url 'signup' %}" method="post" >
+                        <h2>SIGNUP</h2>
+                        <br />
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="red-box">
+                                    <div class="alert alert-danger text-center bg-red" role="alert">
+                                        <p>{{ message }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        {% csrf_token %}
+                        <div class="inputbox">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <input type="username" id="username" name="username" required>
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input type="password" id="password" name="password1" required>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input type="password2" id="password" name="password2" required>
+                            <label for="password2">Confirm Password</label>
+                        </div>
+                        <button class="button2" type="submit">SIGNUP</button>
+                        <br />
+                        <p style="color: white; padding: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Have an account? <a href="{% url 'login' %}">Login</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </body>
+</html>
